@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState, useEffect } from "react";
 import { useAtom } from "jotai";
-import { EventSourceMessage, fetchEventSource } from "@microsoft/fetch-event-source";
+import { type EventSourceMessage, fetchEventSource } from "@microsoft/fetch-event-source";
 
 import {
   buildshipAgentSessionAtom,
@@ -70,7 +70,7 @@ export default function useAgent(agentId: string, agentUrl: string) {
     };
   }, []);
 
-  const controller = useRef<AbortController>();
+  const controller = useRef<AbortController | undefined>(undefined);
 
   const runAgent = useCallback(
     async (input: string, options?: { context?: object; testBuildId?: string }) => {

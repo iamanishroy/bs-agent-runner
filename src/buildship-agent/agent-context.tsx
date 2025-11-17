@@ -1,4 +1,5 @@
-import { createContext, useContext, useCallback, useRef, useState, useEffect, useMemo, ReactNode } from "react";
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useCallback, useRef, useState, useEffect, useMemo, type ReactNode } from "react";
 import { atom, useAtom, useSetAtom } from "jotai";
 import { atomFamily } from "jotai/utils";
 import useAgent from "./use-agent";
@@ -17,7 +18,7 @@ export interface AgentRunner {
 }
 
 // Atom family to store agent runners (reactive state)
-const agentRunnerAtomFamily = atomFamily((agentId: string) =>
+const agentRunnerAtomFamily = atomFamily((_agentId: string) =>
   atom<AgentRunner | null>(null)
 );
 
