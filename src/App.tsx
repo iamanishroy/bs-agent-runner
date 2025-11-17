@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { useAgentContext } from './buildship-agent/agent-context'
 import { Button } from './components/ui/button'
 import { Card } from './components/ui/card'
@@ -261,7 +263,7 @@ function App() {
                         )}
                       </div>
                       <div className="whitespace-pre-wrap break-words text-sm">
-                        {message.content}
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
                       </div>
                       {message.executionId && (
                         <div className="mt-2 font-mono text-xs opacity-70">
